@@ -1,2 +1,0 @@
-<?php
-printName2
