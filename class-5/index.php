@@ -5,6 +5,11 @@
 
 
 
+// get a array length
+// count($arr);
+
+
+
 
 
 
