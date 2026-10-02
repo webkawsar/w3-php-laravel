@@ -156,6 +156,39 @@ ADD UNIQUE (email);
 
 
 
+// Foreign Key
+CREATE TABLE courses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    course_name VARCHAR(100),
+
+    FOREIGN KEY (student_id)
+        REFERENCES students(id)
+        ON DELETE CASCADE
+);
+
+
+
+// MySQL Lesson 13 — JOIN
+// 1. INNER JOIN
+
+// Alias ব্যবহার করা
+SELECT s.name, c.course_name
+FROM students AS s
+INNER JOIN courses AS c
+ON s.id = c.student_id;
+
+SELECT s.name, c.course_name
+FROM students s
+INNER JOIN courses c
+ON s.id = c.student_id
+WHERE s.id >= 1
+ORDER BY s.name ASC;
+
+
+// 2. LEFT JOIN
+
+
 
 */
 
