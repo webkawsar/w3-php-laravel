@@ -187,6 +187,129 @@ ORDER BY s.name ASC;
 
 
 // 2. LEFT JOIN
+SELECT s.name, c.course_name
+FROM students s
+LEFT JOIN courses c
+ON s.id = c.student_id;
+
+
+// 3. Right Join
+SELECT s.name, c.course_name
+FROM students s
+RIGHT JOIN courses c
+ON s.id = c.student_id;
+
+
+// JOIN + COUNT()
+SELECT
+    s.id,
+    s.name,
+    COUNT(c.id) AS total_courses
+FROM students s
+LEFT JOIN courses c
+ON s.id = c.student_id
+GROUP BY s.id, s.name;
+
+
+SELECT
+    s.id,
+    s.name,
+    COUNT(c.id) AS total_courses
+FROM students s
+LEFT JOIN courses c
+ON s.id = c.student_id
+GROUP BY s.id, s.name
+HAVING COUNT(c.id) >= 2;
+
+
+// Multiple JOIN
+SELECT
+    s.name AS student_name,
+    c.course_name,
+    t.name AS teacher_name
+FROM students s
+INNER JOIN courses c
+    ON s.id = c.student_id
+INNER JOIN teachers t
+    ON c.teacher_id = t.id;
+
+
+// JOIN + WHERE + GROUP BY + HAVING + ORDER BY
+SELECT
+    s.name,
+    COUNT(c.id) AS total_courses
+FROM students s
+LEFT JOIN courses c
+    ON s.id = c.student_id
+WHERE s.age >= 18
+GROUP BY s.id, s.name
+HAVING COUNT(c.id) >= 2
+ORDER BY total_courses DESC;
+
+// Subquery
+SELECT *
+FROM students
+WHERE age = (
+    SELECT MAX(age)
+    FROM students
+);
+
+SELECT *
+FROM students
+WHERE id IN (
+    SELECT student_id
+    FROM courses
+    WHERE course_name = 'MySQL'
+);
+
+SELECT
+    s.id,
+    s.name,
+    COUNT(c.id) AS total_courses
+FROM students s
+LEFT JOIN courses c
+ON s.id = c.student_id
+GROUP BY s.id, s.name
+HAVING COUNT(c.id) >= 2;
+
+
+// EXISTS
+SELECT *
+FROM students s
+WHERE EXISTS (
+    SELECT 1
+    FROM courses c
+    WHERE c.student_id = s.id
+);
+
+
+// NOT EXISTS
+SELECT *
+FROM students s
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM courses c
+    WHERE c.student_id = s.id
+);
+
+
+// CASE WHEN
+SELECT
+    name,
+    age,
+    CASE
+        WHEN age < 18 THEN 'Minor'
+        WHEN age BETWEEN 18 AND 25 THEN 'Young'
+        ELSE 'Adult'
+    END AS age_group
+FROM students;
+
+
+
+
+
+
+
 
 
 
