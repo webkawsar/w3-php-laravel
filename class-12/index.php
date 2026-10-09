@@ -4,66 +4,72 @@
 // Normalization, Primary & Foreign Keys, Relationships, Join
 
 
-// Create Database by SQL
 /*
+// Create Database
 CREATE DATABASE school;
+
+// Database data type
+utf8mb4_general_ci
+
+// Show All Databases
+SHOW DATABASES;
+
+// Select a Database
+USE school;
+
+// Delete Database
 DROP DATABASE school;
 /*
 
-// utf8mb4_general_ci
 
 
-// USE school;
-// SHOW DATABASES;
-// SHOW TABLES;
-// DESCRIBE students;
+
+/*
+// Show All Tables from Database
+SHOW TABLES;
+
+// Show Table Structure
+DESCRIBE students;
 
 // Create Table by SQL Command
-/*
 CREATE TABLE students (
-id INT AUTO_INCREMENT PRIMARY KEY,
-name VARCHAR(100) NOT NULL,
-email VARCHAR(100) NOT NULL,
-age TINYINT UNSIGNED
-status VARCHAR(20) DEFAULT 'active'
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    age TINYINT UNSIGNED
+    status VARCHAR(20) DEFAULT 'active'
 );
-*/
 
-
-// Update table by SQL
-/*
+// Update Table
 ALTER TABLE students
-ADD COLUMN phone VARCHAR(20) AFTER status;
+ADD COLUMN phone VARCHAR(20) AFTER email;
 
-MySQL-এ নতুন column নির্দিষ্ট জায়গায় বসাতে সাধারণত FIRST অথবা AFTER ব্যবহার করা হয়।
+// MySQL-এ নতুন column নির্দিষ্ট জায়গায় বসাতে সাধারণত FIRST অথবা AFTER ব্যবহার করা হয়।
 ALTER TABLE students
 ADD COLUMN phone VARCHAR(20) AFTER email,
 ADD COLUMN address VARCHAR(255);
 
 ALTER TABLE students
 ADD COLUMN roll_no VARCHAR(20) FIRST;
-*/
-
-// Delete table by SQL
-/*
-DROP TABLE students; // সম্পূর্ণ table মুছে ফেলে
-TRUNCATE TABLE students; // table-এর সব row সরিয়ে দেয়, কিন্তু structure রাখে
-*/
-
-
-
-
 
 // Data Insert to Table
-/*
 INSERT INTO students (`name`, `email`, `age`)
 VALUES
 ("Kawsar Ahmed", "kawsar@gmail.com", 30),
 ("Samim Ahmed", "samim@gmail.com", 30);
+
+
+// Delete Table all Row only
+TRUNCATE TABLE students; 
+
+// Delete Table
+DROP TABLE students;
 */
 
-// Get data
+
+/*======================Data Related SQL===================================*/
 /*
+// Get data
 SELECT * FROM students;
 
 SELECT * FROM students
