@@ -3,7 +3,7 @@
 // Index 
 // Normalization, Primary & Foreign Keys, Relationships, Join
 
-
+/*==============================Database===================================*/
 /*
 // Create Database
 CREATE DATABASE school;
@@ -23,7 +23,7 @@ DROP DATABASE school;
 
 
 
-
+/*===============================Table===================================*/
 /*
 // Show All Tables from Database
 SHOW TABLES;
@@ -58,7 +58,6 @@ VALUES
 ("Kawsar Ahmed", "kawsar@gmail.com", 30),
 ("Samim Ahmed", "samim@gmail.com", 30);
 
-
 // Delete Table all Row only
 TRUNCATE TABLE students; 
 
@@ -67,17 +66,20 @@ DROP TABLE students;
 */
 
 
-/*======================Data Related SQL===================================*/
+/*============================Data Related SQL===================================*/
 /*
 // Get data
 SELECT * FROM students;
 
+// ORDER BY
 SELECT * FROM students
 ORDER BY age ASC, name ASC;
 
+// LIMIT & OFFSET
 SELECT * FROM students
 LIMIT 2 OFFSET 1;
 
+// IN
 SELECT *
 FROM students
 WHERE age IN (20, 25, 30); // age = 20 OR age = 25 OR age = 30;
@@ -175,7 +177,73 @@ CREATE TABLE courses (
 
 
 
-// MySQL Lesson 13 — JOIN
+
+// Subquery
+SELECT *
+FROM students
+WHERE age = (
+    SELECT MAX(age)
+    FROM students
+);
+
+SELECT *
+FROM students
+WHERE id IN (
+    SELECT student_id
+    FROM courses
+    WHERE course_name = 'MySQL'
+);
+
+SELECT
+    s.id,
+    s.name,
+    COUNT(c.id) AS total_courses
+FROM students s
+LEFT JOIN courses c
+ON s.id = c.student_id
+GROUP BY s.id, s.name
+HAVING COUNT(c.id) >= 2;
+
+
+// EXISTS
+SELECT *
+FROM students s
+WHERE EXISTS (
+    SELECT 1
+    FROM courses c
+    WHERE c.student_id = s.id
+);
+
+
+// NOT EXISTS
+SELECT *
+FROM students s
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM courses c
+    WHERE c.student_id = s.id
+);
+
+
+// CASE WHEN
+SELECT
+    name,
+    age,
+    CASE
+        WHEN age < 18 THEN 'Minor'
+        WHEN age BETWEEN 18 AND 25 THEN 'Young'
+        ELSE 'Adult'
+    END AS age_group
+FROM students;
+
+*/
+
+
+
+
+
+/*===============================MySQL Lesson 13 — JOIN=========================*/
+/*
 // 1. INNER JOIN
 
 // Alias ব্যবহার করা
@@ -251,75 +319,9 @@ WHERE s.age >= 18
 GROUP BY s.id, s.name
 HAVING COUNT(c.id) >= 2
 ORDER BY total_courses DESC;
-
-// Subquery
-SELECT *
-FROM students
-WHERE age = (
-    SELECT MAX(age)
-    FROM students
-);
-
-SELECT *
-FROM students
-WHERE id IN (
-    SELECT student_id
-    FROM courses
-    WHERE course_name = 'MySQL'
-);
-
-SELECT
-    s.id,
-    s.name,
-    COUNT(c.id) AS total_courses
-FROM students s
-LEFT JOIN courses c
-ON s.id = c.student_id
-GROUP BY s.id, s.name
-HAVING COUNT(c.id) >= 2;
-
-
-// EXISTS
-SELECT *
-FROM students s
-WHERE EXISTS (
-    SELECT 1
-    FROM courses c
-    WHERE c.student_id = s.id
-);
-
-
-// NOT EXISTS
-SELECT *
-FROM students s
-WHERE NOT EXISTS (
-    SELECT 1
-    FROM courses c
-    WHERE c.student_id = s.id
-);
-
-
-// CASE WHEN
-SELECT
-    name,
-    age,
-    CASE
-        WHEN age < 18 THEN 'Minor'
-        WHEN age BETWEEN 18 AND 25 THEN 'Young'
-        ELSE 'Adult'
-    END AS age_group
-FROM students;
-
-
-
-
-
-
-
-
-
-
 */
+
+
 
 
 // Update data
