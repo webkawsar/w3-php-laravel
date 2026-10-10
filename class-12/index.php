@@ -84,6 +84,7 @@ SELECT *
 FROM students
 WHERE age IN (20, 25, 30); // age = 20 OR age = 25 OR age = 30;
 
+// LIKE 
 SELECT *
 FROM students
 WHERE name LIKE 'K%'; // mane K diye suru, '%Ahmed' mane Ahmed diye ses, '%ah%' mane jekuno jaygay ah.
@@ -103,7 +104,6 @@ SELECT
     MIN(age) AS minimum_age,
     MAX(age) AS maximum_age
 FROM students;
-
 
 // GROUP BY
 SELECT age, COUNT(*) AS total_students
