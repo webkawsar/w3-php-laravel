@@ -169,7 +169,6 @@ CREATE TABLE courses (
     id INT AUTO_INCREMENT PRIMARY KEY,
     student_id INT,
     course_name VARCHAR(100),
-
     FOREIGN KEY (student_id)
         REFERENCES students(id)
         ON DELETE CASCADE
