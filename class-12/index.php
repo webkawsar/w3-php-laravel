@@ -37,7 +37,9 @@ CREATE TABLE students (
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     age TINYINT UNSIGNED
-    status VARCHAR(20) DEFAULT 'active'
+    status VARCHAR(20) DEFAULT 'active',
+    created_at DATETIME,
+    updated_at DATETIME
 );
 
 // Update Table
