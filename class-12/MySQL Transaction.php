@@ -9,7 +9,14 @@ Consistency
 Isolation
 Durability
 
+CREATE TABLE transaction_demo (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT
+) ENGINE = InnoDB;
 
+INSERT INTO transaction_demo (id, name, age)
+VALUES (1, 'Rahim', 20);
 
 
 
