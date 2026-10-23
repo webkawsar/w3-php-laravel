@@ -31,6 +31,9 @@ SHOW TABLES;
 // Show Table Structure
 DESCRIBE students;
 
+// Show Table SQL Structure
+SHOW CREATE TABLE students;
+
 // Create Table by SQL Command
 CREATE TABLE students (
     id INT AUTO_INCREMENT PRIMARY KEY,
