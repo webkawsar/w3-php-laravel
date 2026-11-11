@@ -8,7 +8,7 @@ $cur_page = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+
 if($cur_page != 'login.php' && $cur_page != 'forget-password.php' && $cur_page != 'reset-password.php') {
     if(!isset($_SESSION['user_id'])) {
         $_SESSION['error'] = "You must log in first.";
-        header("Location:" . BASE_URL . "login.php");
+        header("Location:" . BASE_URL . "/login.php");
         exit();
     }
 }

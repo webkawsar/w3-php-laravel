@@ -3,7 +3,7 @@
         <ul class="nav flex-column">
 
             <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="index.php">
+                <a class="nav-link" aria-current="page" href="<?php echo BASE_URL; ?>">
                     <span data-feather="home" class="align-text-bottom"></span>
                     Dashboard
                 </a>

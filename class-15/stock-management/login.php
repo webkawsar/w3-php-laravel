@@ -20,7 +20,7 @@
 
                 // Fetch user
                 $stmt = $pdo->prepare("
-                    SELECT id, name, email, password
+                    SELECT id, name, email, phone, password
                     FROM users
                     WHERE email = ?
                     LIMIT 1
@@ -34,9 +34,9 @@
 
                     // Set session
                     $_SESSION['user_id'] = $user['id'];
-                    $_SESSION['user_name'] = $user['name'];
-                    $_SESSION['user_email'] = $user['email'];
-
+                    $_SESSION['name'] = $user['name'];
+                    $_SESSION['email'] = $user['email'];
+                    $_SESSION['user'] = $user; // Store the entire user array in session
                     $_SESSION['success'] = "Login successful.";
 
                     // Redirect
