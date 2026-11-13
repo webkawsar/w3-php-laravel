@@ -60,6 +60,7 @@
             // updated session variables
             $_SESSION['name'] = $name;
             $_SESSION['email'] = $email;
+            // manually updated session user info
             $_SESSION['user'] = array_merge($_SESSION['user'], ['name' => $name, 'email' => $email, 'phone' => $phone]);
             $_SESSION['success'] = "Profile updated successfully.";
             header("Location: " . BASE_URL . "/profile.php");

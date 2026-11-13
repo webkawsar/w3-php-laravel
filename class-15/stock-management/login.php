@@ -100,7 +100,7 @@
         </form>
 
         <div class="login-forget-password">
-            <a href="forget-password.php">Forget Password</a>
+            <a href="<?php echo BASE_URL; ?>/forget-password.php">Forget Password</a>
         </div>
     </main>
 </div>
