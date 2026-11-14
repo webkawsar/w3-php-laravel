@@ -49,6 +49,13 @@
                     Data Table
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo BASE_URL ?>/brands/index.php">
+                    <span data-feather="file-text" class="align-text-bottom"></span>
+                    Brands
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
