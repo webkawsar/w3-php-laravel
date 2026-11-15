@@ -56,6 +56,12 @@
                     Brands
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo BASE_URL ?>/categories/index.php">
+                    <span data-feather="file-text" class="align-text-bottom"></span>
+                    Categories
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
