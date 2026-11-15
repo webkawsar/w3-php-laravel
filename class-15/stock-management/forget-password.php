@@ -7,6 +7,11 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 require __DIR__ . '/vendor/autoload.php';
 
+    if(isset($_SESSION['user_id'])) {
+        header("Location: " . BASE_URL . "/index.php");
+        exit();
+    }
+
 ?>
 
 <?php

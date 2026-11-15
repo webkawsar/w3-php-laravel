@@ -2,6 +2,12 @@
 <?php include 'header.php'; ?>
 
 <?php
+
+    if(isset($_SESSION['user_id'])) {
+        header("Location: " . BASE_URL . "/index.php");
+        exit();
+    }
+
     if (isset($_POST['login_form_submit'])) {
 
         try {
