@@ -8,32 +8,32 @@
         $id = $_GET['id'];
         if(!isset($id)) {
             $_SESSION['error'] = "Invalid request";
-            header("Location: " . BASE_URL . "/brands/index.php");
+            header("Location: " . BASE_URL . "/categories/index.php");
             exit();
         }
 
-        $sql = "SELECT * FROM brands WHERE id = ?";
+        // check if category exists
+        $sql = "SELECT * FROM categories WHERE id = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$id]);
-        $brand = $stmt->fetch(PDO::FETCH_ASSOC);
+        $category = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if(!$brand) {
-            throw new Exception("Brand not found");
+        if(!$category) {
+            throw new Exception("Category not found");
         }
 
-        // delete brand
-        $sql = "DELETE FROM brands WHERE id = ?";
+        // delete category
+        $sql = "DELETE FROM categories WHERE id = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$id]);
-        $_SESSION['success'] = "Brand deleted successfully!";
-        header("Location: " . BASE_URL . "/brands/index.php");
+        $_SESSION['success'] = "Category deleted successfully!";
+        header("Location: " . BASE_URL . "/categories/index.php");
         exit();
 
     } catch (Exception $e) {
         $_SESSION['error'] = $e->getMessage();
-        header("Location: " . BASE_URL . "/brands/index.php");
+        header("Location: " . BASE_URL . "/categories/index.php");
         exit();
     }
 
 ?>
-
