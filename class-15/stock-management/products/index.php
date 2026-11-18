@@ -4,10 +4,10 @@
 <?php
 
     try {
-        $sql = "SELECT * FROM brands";
+        $sql = "SELECT * FROM products";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
-        $brands = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (Exception $e) {
         $_SESSION['error'] = $e->getMessage();
     }
@@ -21,8 +21,8 @@
         <main class="col-md-9 ms-sm-auto col-lg-9 px-md-4 pb-3">
 
             <h1 class="page-heading">
-                All Brands
-                <a href="<?php echo BASE_URL ?>/brands/add.php" class="btn btn-primary btn-sm right"><i class="fas fa-plus"></i> Add New</a>
+                All Products
+                <a href="<?php echo BASE_URL ?>/products/add.php" class="btn btn-primary btn-sm right"><i class="fas fa-plus"></i> Add New Product</a>
             </h1>
 
             <div class="table-responsive">
@@ -30,27 +30,35 @@
                     <thead>
                         <tr>
                             <th scope="col">SL</th>
+                            <th scope="col">SKU</th>
                             <th scope="col">Name</th>
                             <th scope="col">Description</th>
+                            <th scope="col">Buying Price</th>
+                            <th scope="col">Selling Price</th>
+                            <th scope="col">Quantity</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($brands as $key => $brand): ?>
+                        <?php foreach($products as $key => $product): ?>
                             <tr>
                                 <td><?php echo $key + 1; ?></td>
-                                <td><?php echo $brand['name']; ?></td>
-                                <td><?php echo $brand['description']; ?></td>
+                                <td><?php echo $product['sku']; ?></td>
+                                <td><?php echo $product['name']; ?></td>
+                                <td><?php echo $product['description']; ?></td>
+                                <td><?php echo $product['buying_price']; ?></td>
+                                <td><?php echo $product['selling_price']; ?></td>
+                                <td><?php echo $product['qty']; ?></td>
                                 <td>
-                                    <span class="badge bg-<?php echo $brand['status'] == 'Active' ? 'success' : 'danger'; ?>">
-                                        <?php echo $brand['status']; ?>
+                                    <span class="badge bg-<?php echo $product['status'] == 'Active' ? 'success' : 'danger'; ?>">
+                                        <?php echo $product['status']; ?>
                                     </span>
                                 </td>
                                 <td>
-                                    <a href="<?php echo BASE_URL ?>/brands/edit.php?id=<?php echo $brand['id']; ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="<?php echo BASE_URL ?>/products/edit.php?id=<?php echo $product['id']; ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Edit</a>
                                     
-                                    <a href="<?php echo BASE_URL ?>/brands/delete.php?id=<?php echo $brand['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?');"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="<?php echo BASE_URL ?>/products/delete.php?id=<?php echo $product['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?');"><i class="fas fa-trash"></i> Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
