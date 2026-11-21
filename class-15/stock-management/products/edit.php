@@ -29,7 +29,7 @@
     }
 
 
-
+    // edit form submit handler
     if(isset($_POST['product_edit_form_submit'])) {
         $brand_id = trim($_POST['brand_id']);
         $category_id = trim($_POST['category_id']);

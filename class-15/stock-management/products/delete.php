@@ -12,26 +12,26 @@
             exit();
         }
 
-        $sql = "SELECT * FROM brands WHERE id = ?";
+        $sql = "SELECT * FROM products WHERE id = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$id]);
-        $brand = $stmt->fetch(PDO::FETCH_ASSOC);
+        $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if(!$brand) {
-            throw new Exception("Brand not found");
+        if(!$product) {
+            throw new Exception("Product not found");
         }
 
-        // delete brand
-        $sql = "DELETE FROM brands WHERE id = ?";
+        // delete product
+        $sql = "DELETE FROM products WHERE id = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$id]);
-        $_SESSION['success'] = "Brand deleted successfully!";
-        header("Location: " . BASE_URL . "/brands/index.php");
+        $_SESSION['success'] = "Product deleted successfully!";
+        header("Location: " . BASE_URL . "/products/index.php");
         exit();
 
     } catch (Exception $e) {
         $_SESSION['error'] = $e->getMessage();
-        header("Location: " . BASE_URL . "/brands/index.php");
+        header("Location: " . BASE_URL . "/products/index.php");
         exit();
     }
 
