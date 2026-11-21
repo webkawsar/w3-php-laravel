@@ -4,7 +4,16 @@
 <?php
 
     try {
-        $sql = "SELECT * FROM products";
+        $sql = "SELECT 
+        p.*,
+        b.name as brand_name,
+        c.name as category_name
+        FROM products as p
+        JOIN brands as b 
+        ON p.brand_id = b.id
+        JOIN categories as c 
+        ON p.category_id = c.id
+        ";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -31,6 +40,8 @@
                         <tr>
                             <th scope="col">SL</th>
                             <th scope="col">SKU</th>
+                            <th scope="col">Brand</th>
+                            <th scope="col">Category</th>
                             <th scope="col">Name</th>
                             <th scope="col">Description</th>
                             <th scope="col">Buying Price</th>
@@ -45,6 +56,8 @@
                             <tr>
                                 <td><?php echo $key + 1; ?></td>
                                 <td><?php echo $product['sku']; ?></td>
+                                <td><?php echo $product['brand_name']; ?></td>
+                                <td><?php echo $product['category_name']; ?></td>
                                 <td><?php echo $product['name']; ?></td>
                                 <td><?php echo $product['description']; ?></td>
                                 <td><?php echo $product['buying_price']; ?></td>
