@@ -13,7 +13,7 @@ try {
 catch( PDOException $exception ) {
     echo "Connection error :" . $exception->getMessage();
 }
-define("BASE_URL", "http://localhost/w3-php-laravel/class-15/stock-management");
+define("BASE_URL", "http://localhost/w3-php-laravel/class-16/stock-management");
 define("ADMIN_URL", BASE_URL."admin/");
 
 

@@ -69,6 +69,13 @@
                     Products
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo BASE_URL ?>/suppliers/index.php">
+                    <span data-feather="file-text" class="align-text-bottom"></span>
+                    Suppliers
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
