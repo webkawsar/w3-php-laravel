@@ -33,11 +33,11 @@
             }
 
             // check if supplier name already exists
-            $sql = "SELECT * FROM suppliers WHERE name = ?";
+            $sql = "SELECT * FROM suppliers WHERE phone = ?";
             $stmt = $pdo->prepare($sql);
-            $stmt->execute([$name]);
+            $stmt->execute([$phone]);
             if($stmt->rowCount() > 0) {
-                throw new Exception("Supplier name already exists");
+                throw new Exception("Supplier phone already exists");
             }
 
             $sql = "INSERT INTO suppliers (name, phone, company, address, due_balance, status) VALUES (?, ?, ?, ?, ?, ?)";
