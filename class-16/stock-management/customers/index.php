@@ -52,9 +52,9 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <a href="<?php echo BASE_URL ?>/customers/edit.php?id=<?php echo $supplier['id']; ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="<?php echo BASE_URL ?>/customers/edit.php?id=<?php echo $customer['id']; ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Edit</a>
                                     
-                                    <a href="<?php echo BASE_URL ?>/customers/delete.php?id=<?php echo $supplier['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?');"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="<?php echo BASE_URL ?>/customers/delete.php?id=<?php echo $customer['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?');"><i class="fas fa-trash"></i> Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

@@ -27,7 +27,7 @@
                 throw new Exception("Due Balance is required");
             }
 
-            // check if customer name already exists
+            // check if customer phone already exists
             $sql = "SELECT * FROM customers WHERE phone = ?";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$phone]);
